@@ -1,0 +1,1798 @@
+@import '@tabler/core/dist/css/tabler.min.css';
+
+/* COMPLETE NAVIGATION FULL WIDTH FIX */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    background-color: #000000 !important;
+}
+
+.page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    background-color: #000000 !important;
+}
+
+/* Navigation container fixes */
+.navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    max-width: none !important;
+    left: 0 !important;
+    position: relative !important;
+    transform: translateX(0) !important;
+}
+
+/* Force navbar to extend beyond viewport to eliminate any white space */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50px;
+    right: -50px;
+    height: 100%;
+    background-color: #222551;
+    z-index: -1;
+}
+
+/* Additional navbar full-width fix */
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    right: -100vw;
+    height: 100%;
+    background-color: #222551;
+    z-index: -2;
+}
+
+.navbar .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Ensure user menu doesn't get cut off */
+.navbar-nav .nav-item:last-child {
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+/* Add proper spacing for user menu button */
+.navbar-nav .dropdown .nav-link {
+    padding-right: 1.5rem !important;
+}
+
+.navbar-nav .nav-link {
+    white-space: nowrap;
+    right: 0 !important;
+    position: relative !important;
+    background-color: #222551 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.navbar .container-fluid {
+    margin: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Remove any Tabler-specific margins/padding */
+.navbar-expand-md {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Dark theme enforcement - Gralix Blue */
+[data-bs-theme="dark"] .navbar,
+.navbar[data-bs-theme="dark"] {
+    background-color: #222551 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Override any container constraints */
+.container-fluid {
+    margin: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Ensure no white space on sides */
+.main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Gralix Brand Colors - Official */
+:root {
+    /* Primary Brand Colors - Gralix Blue Palette */
+    --gralix-blue: #222551;
+    --gralix-blue-light: #3d3f6a;
+    --gralix-blue-dark: #1a1b3e;
+    --gralix-primary: #222551; /* Updated to match Gralix Blue */
+    --gralix-primary-light: #3d3f6a;
+    
+    /* Orange Brand Colors - Gralix Orange */
+    --gralix-orange: #E85C2C;
+    --gralix-orange-light: #f0744a;
+    --gralix-orange-dark: #c94d1f;
+    
+    /* Extended Blue Palette based on Gralix Blue */
+    --blue-100: #eef0f8;
+    --blue-200: #d4d7ea;
+    --blue-300: #a3a8d1;
+    --blue-400: #6d739f;
+    --blue-500: #222551;
+    --blue-600: #1a1b3e;
+    --blue-700: #151530;
+    --blue-800: #0f0f22;
+    --blue-900: #0a0a14;
+    
+    /* Extended Orange Palette based on Gralix Orange */
+    --orange-100: #fef0ec;
+    --orange-200: #fce0d9;
+    --orange-300: #f9b5a6;
+    --orange-400: #f0744a;
+    --orange-500: #E85C2C;
+    --orange-600: #c94d1f;
+    --orange-700: #a03d19;
+    --orange-800: #7a2e13;
+    --orange-900: #5a220e;
+    
+    /* Neutral Colors */
+    --gralix-dark: #212121;
+    --gralix-medium: #757575;
+    --gralix-light: #F5F5F5;
+    --gralix-white: #FFFFFF;
+    
+    /* Override Tabler variables */
+    --tblr-primary: var(--gralix-primary);
+    --tblr-primary-rgb: 51, 133, 255;
+    --tblr-secondary: var(--gralix-primary-light);
+    --tblr-success: #28a745;
+    --tblr-warning: var(--gralix-orange);
+    --tblr-danger: #dc3545;
+    --tblr-info: var(--gralix-primary-light);
+    --tblr-light: var(--gralix-light);
+    --tblr-dark: var(--gralix-dark);
+}
+
+/* Brand Logo Styling */
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-brand a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Make logo white for dark header */
+    transition: filter 0.2s ease;
+}
+
+.brand-logo:hover {
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+/* Standard Tabler layout */
+.page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* Login page gradient background - Gralix colors */
+.login-gradient {
+    background: linear-gradient(135deg, 
+        var(--gralix-blue) 0%, 
+        var(--blue-400) 25%, 
+        var(--gralix-orange) 50%, 
+        var(--orange-400) 75%, 
+        var(--blue-600) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+}
+
+.login-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Login card styling for gradient background */
+.login-gradient .card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important;
+}
+
+.login-gradient .card-body {
+    background: transparent !important;
+}
+
+.login-gradient .card-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(34, 37, 81, 0.1) !important;
+}
+
+/* Login form styling */
+.login-gradient .form-control {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(34, 37, 81, 0.2) !important;
+    backdrop-filter: blur(5px);
+}
+
+.login-gradient .form-control:focus {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: var(--gralix-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(34, 37, 81, 0.25) !important;
+}
+
+/* Login button styling - Gralix colors */
+.login-gradient .btn-primary {
+    background: linear-gradient(135deg, var(--gralix-blue) 0%, var(--gralix-orange) 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(232, 92, 44, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.login-gradient .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gralix-orange) 0%, var(--orange-600) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(232, 92, 44, 0.4) !important;
+}
+
+/* Logo and title styling */
+.login-gradient .text-center h1 {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 700 !important;
+}
+
+.login-gradient .text-center p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    font-weight: 500 !important;
+}
+
+/* Logo styling */
+.login-gradient img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+}
+
+/* Form labels */
+.login-gradient .form-label {
+    color: var(--gralix-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* Link styling */
+.login-gradient a {
+    color: var(--gralix-primary) !important;
+    font-weight: 500 !important;
+}
+
+.login-gradient a:hover {
+    color: var(--gralix-primary-light) !important;
+    text-decoration: underline !important;
+}
+
+.main-content {
+    padding-top: 0;
+}
+
+/* Fix container spacing */
+.container-xl {
+    max-width: 1320px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Fix card spacing and alignment */
+.row-deck .card {
+    margin-bottom: 1.5rem;
+}
+
+/* Ensure ALL cards are visible with proper contrast */
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    background-color: #ffffff !important;
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1rem 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .recharts-wrapper {
+    flex: 1;
+}
+
+.card-title {
+    color: #212529;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Row deck cards */
+.row-deck .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.row-deck .card .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fix table responsiveness */
+.table-responsive {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: var(--gralix-light);
+    border-top: none;
+    font-weight: 600;
+    color: var(--gralix-dark);
+    font-size: 0.875rem;
+    padding: 1rem 0.75rem;
+}
+
+.table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Ensure ALL form elements are visible with proper contrast */
+.form-control, .form-select {
+    border: 1px solid #ced4da !important;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--gralix-blue);
+    box-shadow: 0 0 0 0.2rem rgba(34, 37, 81, 0.25);
+    background-color: #ffffff;
+    color: #212529;
+}
+
+.form-control::placeholder {
+    color: var(--gralix-medium);
+    opacity: 1;
+}
+
+/* Ensure ALL labels are visible with proper contrast */
+.form-label {
+    font-weight: 500 !important;
+    color: #212529 !important;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Standard Tabler form hints */
+.form-hint, .form-text {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Form validation */
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #dc3545;
+}
+
+/* Form footer */
+.form-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.form-footer .btn {
+    min-width: 120px;
+}
+
+/* Ensure ALL buttons are visible with proper Tabler styling */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    line-height: 1.5;
+    background-color: #ffffff;
+    color: #212529;
+    border-color: #ced4da;
+}
+
+/* Fix white buttons - make them visible with proper contrast */
+.btn:not(.btn-primary):not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-danger) {
+    background-color: #f8f9fa !important;
+    border-color: var(--gralix-blue) !important;
+    color: var(--gralix-blue) !important;
+    font-weight: 500 !important;
+}
+
+.btn:not(.btn-primary):not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-danger):hover {
+    background-color: var(--gralix-blue) !important;
+    border-color: var(--gralix-blue) !important;
+    color: #ffffff !important;
+}
+
+/* Standard Tabler primary buttons with Gralix colors */
+.btn-primary {
+    background-color: var(--gralix-orange);
+    border-color: var(--gralix-orange);
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--orange-600);
+    border-color: var(--orange-600);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(232, 92, 44, 0.3);
+}
+
+/* Outline buttons */
+.btn-outline-primary {
+    color: var(--gralix-orange);
+    border-color: var(--gralix-orange);
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--gralix-orange);
+    border-color: var(--gralix-orange);
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: var(--gralix-blue) !important;
+    border-color: var(--gralix-blue) !important;
+    background-color: #f8f9fa !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--gralix-blue) !important;
+    border-color: var(--gralix-blue) !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+    background-color: transparent;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+/* Dark navigation background - Gralix Blue */
+.navbar {
+    background-color: #222551 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    position: relative;
+    z-index: 1030;
+}
+
+/* Ensure ALL navigation links are visible */
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    margin: 0.125rem 0.25rem;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(232, 92, 44, 0.15);
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(232, 92, 44, 0.2);
+}
+
+.nav-link.active {
+    background-color: var(--gralix-orange);
+    color: white !important;
+    box-shadow: 0 2px 8px rgba(232, 92, 44, 0.3);
+}
+
+/* Standard Tabler page header */
+.page-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    color: #212529;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.page-pretitle {
+    color: #6c757d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Fix badges - ensure all badges are visible */
+.badge {
+    font-weight: 600 !important;
+    padding: 0.375rem 0.75rem !important;
+    border-radius: 0.375rem !important;
+    font-size: 0.75rem !important;
+    border: 1px solid transparent !important;
+}
+
+/* Fix specific badge colors for better visibility */
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-light {
+    background-color: var(--blue-500) !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-muted {
+    background-color: var(--blue-500) !important;
+    color: #ffffff !important;
+}
+
+/* Fix table action buttons visibility */
+.table .btn {
+    margin: 0.125rem !important;
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+}
+
+.table .btn-outline-secondary {
+    background-color: #f8f9fa !important;
+    border-color: var(--blue-500) !important;
+    color: var(--blue-500) !important;
+}
+
+.table .btn-outline-secondary:hover {
+    background-color: var(--blue-500) !important;
+    border-color: var(--blue-500) !important;
+    color: #ffffff !important;
+}
+
+/* Fix search section buttons */
+.card-body .btn-outline-secondary {
+    background-color: #f8f9fa !important;
+    border-color: var(--blue-500) !important;
+    color: var(--blue-500) !important;
+    font-weight: 500 !important;
+}
+
+.card-body .btn-outline-secondary:hover {
+    background-color: var(--blue-500) !important;
+    border-color: var(--blue-500) !important;
+    color: #ffffff !important;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-warning {
+    background-color: var(--gralix-orange) !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+/* Fix avatar styling */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+/* Fix dropdown menus */
+.dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    padding: 0.5rem 0;
+    background-color: var(--gralix-white);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: var(--gralix-dark);
+}
+
+.dropdown-item:hover {
+    background-color: var(--gralix-light);
+    color: var(--gralix-primary);
+}
+
+/* Fix alerts */
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+    padding: 1rem 1.5rem;
+}
+
+/* Fix pagination */
+.pagination .page-link {
+    color: var(--gralix-primary);
+    border-color: #dee2e6;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--gralix-light);
+    border-color: var(--gralix-primary);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--gralix-primary);
+    border-color: var(--gralix-primary);
+}
+
+/* Fix tabs - Global tab navigation fixes */
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 0;
+}
+
+.nav-tabs .nav-link {
+    color: var(--gralix-medium);
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem;
+    margin-right: 0.5rem;
+    background-color: transparent;
+    border-radius: 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: var(--gralix-light);
+    color: var(--gralix-primary);
+    border-bottom-color: var(--gralix-primary-light);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--gralix-primary);
+    background-color: #ffffff;
+    border-bottom-color: var(--gralix-primary);
+    font-weight: 600;
+}
+
+/* Card header tabs specific styling */
+.card-header-tabs .nav-link {
+    margin-bottom: -1px;
+    color: var(--gralix-medium);
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem;
+    margin-right: 0.5rem;
+    background-color: transparent;
+    border-radius: 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.card-header-tabs .nav-link:hover {
+    background-color: var(--gralix-light);
+    color: var(--gralix-primary);
+    border-bottom-color: var(--gralix-primary-light);
+}
+
+.card-header-tabs .nav-link.active {
+    color: var(--gralix-primary);
+    background-color: #ffffff;
+    border-bottom-color: var(--gralix-primary);
+    font-weight: 600;
+}
+
+/* Fix empty states */
+.empty {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.empty-img {
+    margin-bottom: 1rem;
+}
+
+.empty-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gralix-dark);
+    margin-bottom: 0.5rem;
+}
+
+.empty-subtitle {
+    color: var(--gralix-medium);
+    margin-bottom: 1.5rem;
+}
+
+/* Additional brand consistency improvements */
+.btn-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-list .btn {
+    white-space: nowrap;
+}
+
+/* Fix form labels */
+.form-label {
+    font-weight: 500;
+    color: var(--gralix-dark);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Fix input icons */
+.input-icon {
+    position: relative;
+}
+
+.input-icon-addon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gralix-medium);
+    z-index: 3;
+}
+
+.input-icon .form-control {
+    padding-left: 2.5rem;
+}
+
+/* Fix card titles */
+.card-title {
+    font-weight: 600;
+    color: var(--gralix-dark);
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Fix breadcrumbs */
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb-item a {
+    color: var(--gralix-primary);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--gralix-primary-light);
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--gralix-medium);
+}
+
+/* Fix status indicators */
+.status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot-animated {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Fix loading states */
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Additional navigation improvements */
+.navbar-brand {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand:hover {
+    color: white !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Improve notification and user dropdown visibility */
+.navbar .nav-link {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .dropdown-toggle::after {
+    border-top-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Enhanced contrast for all navigation elements */
+.navbar .nav-link svg {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Fix user profile with transparent background */
+.navbar .dropdown-toggle {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+}
+
+.navbar .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+}
+
+/* Fix user profile text visibility */
+.navbar .dropdown-toggle .text-muted {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500 !important;
+}
+
+.navbar .dropdown-toggle .text-dark {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Global text visibility improvements */
+.card-title {
+    color: #212529 !important;
+    font-weight: 600 !important;
+}
+
+.card-header h3.card-title {
+    color: #212529 !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Ensure all text in cards is visible */
+.card-body {
+    color: #212529 !important;
+}
+
+.card-body .text-muted {
+    color: #495057 !important;
+}
+
+/* Improve contrast for all text-muted elements */
+.text-muted {
+    color: #495057 !important;
+}
+
+/* Improve contrast for light grey backgrounds and elements */
+.bg-light {
+    background-color: #e9ecef !important;
+    color: #212529 !important;
+}
+
+.bg-gray {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+/* Improve contrast for form elements */
+.form-text {
+    color: #495057 !important;
+}
+
+/* Improve contrast for small text elements */
+small, .small {
+    color: #495057 !important;
+}
+
+/* Improve contrast for card subtitles and descriptions */
+.card-subtitle {
+    color: #495057 !important;
+}
+
+/* Improve contrast for table secondary text */
+.table .text-muted {
+    color: #495057 !important;
+}
+
+/* Improve contrast for empty state text */
+.empty-subtitle {
+    color: #495057 !important;
+}
+
+/* Improve contrast for navigation secondary text */
+.navbar .text-muted {
+    color: #495057 !important;
+}
+
+/* Improve contrast for secondary badges and buttons */
+.bg-secondary {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+    color: #ffffff !important;
+}
+
+/* Improve contrast for disabled elements */
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
+}
+
+/* Improve contrast for placeholder text */
+.form-control::placeholder {
+    color: #6c757d !important;
+    opacity: 1;
+}
+
+/* Improve contrast for input group text */
+.input-group-text {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
+    border-color: #ced4da !important;
+}
+
+/* ========================================
+   COMPREHENSIVE LIGHT COLOR FIXES
+   ======================================== */
+
+/* Fix very light page backgrounds */
+.page {
+    background-color: #f1f3f4 !important;
+}
+
+/* Fix light card backgrounds that are too light */
+.card {
+    background-color: #ffffff !important;
+    border-color: #dee2e6 !important;
+}
+
+/* Fix very light button backgrounds */
+.btn:not(.btn-primary):not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-danger) {
+    background-color: #f1f3f4 !important;
+    border-color: var(--gralix-blue) !important;
+    color: var(--gralix-blue) !important;
+}
+
+.btn-outline-secondary {
+    background-color: #f1f3f4 !important;
+    border-color: var(--gralix-blue) !important;
+    color: var(--gralix-blue) !important;
+}
+
+/* Fix table button backgrounds */
+.table .btn-outline-secondary {
+    background-color: #f1f3f4 !important;
+    border-color: var(--gralix-blue) !important;
+    color: var(--gralix-blue) !important;
+}
+
+/* Fix search section buttons */
+.card-body .btn-outline-secondary {
+    background-color: #f1f3f4 !important;
+    border-color: var(--gralix-blue) !important;
+    color: var(--gralix-blue) !important;
+}
+
+/* Fix very light borders */
+.pagination .page-link {
+    color: var(--gralix-primary);
+    border-color: #adb5bd !important;
+}
+
+/* Fix tab borders */
+.nav-tabs {
+    border-bottom: 1px solid #adb5bd !important;
+    margin-bottom: 0;
+}
+
+/* ========================================
+   CUSTOMER VIEW TAB IMPROVEMENTS
+   ======================================== */
+
+/* Improve tab link contrast for better visibility */
+.nav-tabs .nav-link {
+    color: #495057 !important;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border-bottom-color: var(--gralix-blue);
+    text-decoration: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: #212529 !important;
+    background-color: #ffffff !important;
+    border-bottom-color: var(--gralix-blue) !important;
+    font-weight: 600;
+    border-bottom-width: 3px;
+}
+
+/* Card header tabs specific improvements */
+.card-header-tabs .nav-link {
+    margin-bottom: -1px;
+    color: #495057 !important;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.card-header-tabs .nav-link:hover {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border-bottom-color: var(--gralix-blue);
+    text-decoration: none;
+}
+
+.card-header-tabs .nav-link.active {
+    color: #212529 !important;
+    background-color: #ffffff !important;
+    border-bottom-color: var(--gralix-blue) !important;
+    font-weight: 600;
+    border-bottom-width: 3px;
+}
+
+/* Ensure tab content is visible */
+.tab-content {
+    background-color: #ffffff !important;
+    border-radius: 0 0 0.375rem 0.375rem;
+}
+
+.tab-pane {
+    padding: 1rem;
+}
+
+/* Improve tab icons visibility */
+.nav-tabs .nav-link svg,
+.card-header-tabs .nav-link svg {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover svg,
+.card-header-tabs .nav-link:hover svg {
+    opacity: 1;
+}
+
+.nav-tabs .nav-link.active svg,
+.card-header-tabs .nav-link.active svg {
+    opacity: 1;
+    color: var(--gralix-blue);
+}
+
+/* Fix form control borders */
+.form-control, .form-select {
+    border: 1px solid #adb5bd !important;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--blue-500) !important;
+    box-shadow: 0 0 0 0.2rem rgba(34, 37, 81, 0.25) !important;
+}
+
+/* Fix very light disabled backgrounds */
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+    border-color: #adb5bd !important;
+}
+
+/* Fix light input group backgrounds */
+.input-group-text {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+    border-color: #adb5bd !important;
+}
+
+/* Fix very light badge backgrounds */
+.badge.bg-light {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
+}
+
+/* Fix light alert backgrounds */
+.alert-light {
+    background-color: #f8f9fa !important;
+    border-color: #adb5bd !important;
+    color: #495057 !important;
+}
+
+/* Fix light list group backgrounds */
+.list-group-item-light {
+    background-color: #f8f9fa !important;
+    color: #495057 !important;
+}
+
+/* Fix very light modal backgrounds */
+.modal-content {
+    background-color: #ffffff !important;
+    border-color: #adb5bd !important;
+}
+
+/* Fix light dropdown backgrounds */
+.dropdown-menu {
+    background-color: #ffffff !important;
+    border-color: #adb5bd !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fix light progress backgrounds */
+.progress {
+    background-color: #f8f9fa !important;
+}
+
+/* Fix light breadcrumb backgrounds */
+.breadcrumb {
+    background-color: transparent !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #6c757d !important;
+}
+
+/* Fix light table borders */
+.table {
+    border-color: #adb5bd !important;
+}
+
+.table thead th {
+    border-bottom-color: #adb5bd !important;
+}
+
+.table tbody td {
+    border-top-color: #adb5bd !important;
+}
+
+/* Fix light card borders */
+.card-header {
+    border-bottom-color: #adb5bd !important;
+}
+
+.card-footer {
+    border-top-color: #adb5bd !important;
+}
+
+/* Fix light button group borders */
+.btn-group .btn {
+    border-color: #adb5bd !important;
+}
+
+/* Fix light nav link borders */
+.nav-link {
+    border-color: #adb5bd !important;
+}
+
+/* Fix light pagination borders */
+.page-link {
+    border-color: #adb5bd !important;
+}
+
+/* Fix light tooltip backgrounds */
+.tooltip .tooltip-inner {
+    background-color: #495057 !important;
+}
+
+/* Fix light popover backgrounds */
+.popover {
+    background-color: #ffffff !important;
+    border-color: #adb5bd !important;
+}
+
+/* Fix light toast backgrounds */
+.toast {
+    background-color: #ffffff !important;
+    border-color: #adb5bd !important;
+}
+
+/* Fix light spinner borders */
+.spinner-border {
+    border-color: #adb5bd !important;
+    border-right-color: transparent !important;
+}
+
+/* Fix light close button opacity */
+.btn-close {
+    opacity: 0.7 !important;
+}
+
+.btn-close:hover {
+    opacity: 1 !important;
+}
+
+/* Fix light text in various components */
+.text-light {
+    color: #495057 !important;
+}
+
+.text-lighter {
+    color: #6c757d !important;
+}
+
+/* Fix light borders in various components */
+.border-light {
+    border-color: #adb5bd !important;
+}
+
+.border-lighter {
+    border-color: #dee2e6 !important;
+}
+
+/* Fix light shadows that might be too subtle */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.card-body .text-dark {
+    color: #212529 !important;
+    font-weight: 500 !important;
+}
+
+/* Fix chart text visibility */
+.recharts-text {
+    fill: #212529 !important;
+    font-weight: 500 !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+    fill: #212529 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.recharts-tooltip-label {
+    color: #212529 !important;
+    font-weight: 600 !important;
+}
+
+/* Improve breadcrumb visibility */
+.breadcrumb-item {
+    color: #6c757d !important;
+}
+
+.breadcrumb-item.active {
+    color: #212529 !important;
+    font-weight: 500 !important;
+}
+
+/* Improve form label visibility */
+.form-label {
+    color: #212529 !important;
+    font-weight: 500 !important;
+}
+
+/* Improve table text visibility */
+.table {
+    color: #212529 !important;
+}
+
+.table th {
+    color: #212529 !important;
+    font-weight: 600 !important;
+}
+
+.table td {
+    color: #212529 !important;
+}
+
+/* Improve button text visibility */
+.btn {
+    font-weight: 500 !important;
+}
+
+.btn-primary {
+    color: #ffffff !important;
+}
+
+.btn-outline-primary {
+    color: var(--gralix-primary) !important;
+    font-weight: 500 !important;
+}
+
+.btn-outline-secondary {
+    color: #6c757d !important;
+    font-weight: 500 !important;
+}
+
+/* Remove any button styling from user dropdown */
+.navbar .btn-link {
+    background-color: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.navbar .btn-link:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Ensure no background on user dropdown container */
+.navbar .nav-item.dropdown .nav-link {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Override any Bootstrap/Tabler defaults for user dropdown */
+.navbar .nav-item.dropdown button {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.navbar .nav-item.dropdown button:focus,
+.navbar .nav-item.dropdown button:active,
+.navbar .nav-item.dropdown button:focus-visible {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Target all possible elements that could have white background */
+.navbar .nav-item.dropdown,
+.navbar .nav-item.dropdown *,
+.navbar .nav-item.dropdown button *,
+.navbar .nav-item.dropdown .d-flex,
+.navbar .nav-item.dropdown .lh-1,
+.navbar .nav-item.dropdown .text-reset,
+.navbar .nav-item.dropdown .ps-2,
+.navbar .nav-item.dropdown .small {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+/* Specifically target the user info container */
+.navbar .nav-item.dropdown .d-none.d-xl-block {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+/* Target any div or span that might have background */
+.navbar .nav-item.dropdown div,
+.navbar .nav-item.dropdown span {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+/* Ensure no background on the entire dropdown container */
+.navbar .nav-item.dropdown {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+/* Nuclear option - override everything that could have a white background */
+.navbar .nav-item.dropdown,
+.navbar .nav-item.dropdown > *,
+.navbar .nav-item.dropdown > * > *,
+.navbar .nav-item.dropdown > * > * > * {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Override any potential white backgrounds from Bootstrap or other frameworks */
+.navbar .nav-item.dropdown [class*="bg-"],
+.navbar .nav-item.dropdown [style*="background"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* Override flex-row nav-link styling specifically for user dropdown */
+.navbar-nav.flex-row .nav-item.dropdown .nav-link {
+    background-color: transparent !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Override any potential white backgrounds from app.blade.php styles */
+.navbar .nav-item.dropdown .nav-link {
+    background-color: transparent !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+
+/* Fix avatar styling with transparent background */
+.navbar .avatar {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Global spinner and loading fixes */
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border 0.75s linear infinite;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.125rem;
+}
+
+@keyframes spinner-border {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading states */
+.btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.btn .spinner-border-sm {
+    margin-right: 0.5rem;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .container-xl {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .page-header {
+        padding: 1rem 0;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn-list {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-list .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .brand-logo {
+        height: 28px;
+    }
+    
+    .navbar {
+        background: linear-gradient(135deg, var(--gralix-dark) 0%, #1a1a1a 100%);
+    }
+    
+    /* Reduce spacing on mobile for user menu */
+    .navbar-nav .nav-item:last-child {
+        margin-right: 0.5rem;
+    }
+    
+    .navbar-nav .dropdown .nav-link {
+        padding-right: 0.75rem !important;
+    }
+}
+
+/* Fix avatar styling */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Fix navigation active states */
+.nav-link.active {
+    background-color: rgba(var(--tblr-primary-rgb), 0.1);
+    color: var(--tblr-primary);
+}
+
+/* Fix dropdown menus */
+.dropdown-menu {
+    border: 1px solid var(--tblr-border-color);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: var(--gralix-white);
+}
+
+/* Fix form elements */
+.form-control:focus {
+    border-color: var(--tblr-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--tblr-primary-rgb), 0.25);
+}
+
+/* Fix buttons */
+.btn {
+    border-radius: 0.375rem;
+}
+
+/* Fix cards */
+.card {
+    border: 1px solid var(--tblr-border-color);
+    border-radius: 0.5rem;
+}
+
+/* Fix tables */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: var(--tblr-muted);
+    font-size: 0.875rem;
+}
+
+/* Fix alerts */
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+}
+
+/* Fix badges */
+.badge {
+    font-weight: 500;
+}
+
+/* Ensure proper spacing */
+.container-xl {
+    max-width: 1320px;
+}
+
+/* Fix sidebar navigation */
+.navbar-vertical .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.375rem;
+    margin: 0.125rem 0.5rem;
+}
+
+.navbar-vertical .navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.navbar-vertical .navbar-nav .nav-link.active {
+    background-color: var(--tblr-primary);
+    color: white;
+}
+
+/* Fix header */
+.navbar.navbar-expand-md {
+    background-color: white;
+    border-bottom: 1px solid var(--tblr-border-color);
+    padding: 1rem 0;
+}
+
+/* Remove empty div spacing and progress bars */
+.row-deck .card {
+    margin-bottom: 1rem;
+}
+
+.card-body:empty {
+    display: none;
+}
+
+.progress.progress-sm {
+    height: 0.25rem;
+    margin-bottom: 0;
+}
+
+.progress.progress-sm:empty {
+    display: none;
+}
+
+/* Ensure no unnecessary spacing in dashboard */
+.dashboard-container .row-deck {
+    margin-bottom: 0;
+}
+
+
+/* Remove spacing between dashboard sections */
+.row-deck.row-cards + .row-deck.row-cards {
+    margin-top: 0;
+}
+
+/* Hide empty rows that might create blank cards */
+.row-deck.row-cards:empty {
+    display: none;
+}
+
+/* Ensure no gap between stats cards and other sections */
+.container-xl .row-deck.row-cards:first-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.container-xl .row-deck.row-cards:not(:first-of-type) {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
